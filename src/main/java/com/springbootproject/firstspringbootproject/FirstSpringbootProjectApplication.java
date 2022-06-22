@@ -12,7 +12,7 @@ public class FirstSpringbootProjectApplication {
 	public static void main(String[] args) {
 		ApplicationContext ctx=SpringApplication.run(FirstSpringbootProjectApplication.class, args);
 	}
-	@Profile("prod")
+	//@Profile("prod")
 	@Bean
 	public String dummy() {
 		return "Hello";
