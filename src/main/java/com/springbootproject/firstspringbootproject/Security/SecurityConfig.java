@@ -21,7 +21,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.withUser("user1").password("secret1")			
 		.roles("USER").and().withUser("admin1").password("secret1")
 		.roles("USER", "ADMIN");
-		System.out.println("hello");
 	}
 	// Authorization : Role -> Access
 	// survey -> USER
@@ -29,8 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.httpBasic().and().authorizeRequests().antMatchers("/surveys/**")
 				.hasRole("USER").antMatchers("/users/**").hasRole("USER")
-				.antMatchers("/**").hasRole("ADMIN").and().formLogin();
-		System.out.println("hello1");
+				.antMatchers("/**").hasRole("ADMIN").and().csrf().disable().headers().frameOptions().disable();
 	}
 	@Bean
     public PasswordEncoder getPasswordEncoder(){

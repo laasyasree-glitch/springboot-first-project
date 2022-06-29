@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import com.springboot.web.springbootfirstwebapplication.controller.TodoRepository;
+import com.springbootproject.firstspringbootproject.jpa.UserRepository;
 /*
 " / surveys / { surveyId } / questions / {questionId}"
 SurveyController
@@ -21,6 +24,9 @@ SurveyService
 SurveyService . retrieveQuestions ( surveyId )*/
 @RestController
 public class SurveyController {
+	
+	@Autowired
+	UserRepository repository;
 	
 	@Autowired
 	private SurveyService surveyService;
@@ -46,7 +52,7 @@ public class SurveyController {
         }
 
        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{id}").buildAndExpand(createdTodo.getId()).toUri();
+                .path("/{id}").buildAndExpand(createdTodo.getId()).toUri();   //Developing url for new question
 
         return ResponseEntity.created(location).build();
 

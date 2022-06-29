@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+
+import com.springbootproject.firstspringbootproject.Survey;
 @Repository
-public interface UserRepository extends CrudRepository<User,Long>{
-	 List<User> findByRole(String description);
+public interface SurveyRepository extends CrudRepository<Survey,Long>{
+	 List<Survey> findByRole(String description);
 	
 }

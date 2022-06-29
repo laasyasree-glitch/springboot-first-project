@@ -42,7 +42,7 @@ public class SurveyControllerIT {
 	}
 
 	@Test
-	public void testRetrieveSurveyQuestion() throws JSONException {
+	public void testRetrieveSurveyQuestion() throws JSONException {//Body of the question format
 
 		HttpEntity<String> entity = new HttpEntity<String>(null, headers);
 
@@ -56,7 +56,7 @@ public class SurveyControllerIT {
 	}
 
 	@Test
-	public void retrieveAllSurveyQuestions() throws Exception {
+	public void retrieveAllSurveyQuestions() throws Exception {//Contains question
 
 		ResponseEntity<List<Question>> response = restTemplate.exchange(
 				createURLWithPort("/surveys/Survey1/questions"),
