@@ -8,32 +8,40 @@ import javax.persistence.Id;
 @Entity//Table
 public class User {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
 	
-	private String name;
+	private String userName;
 	private String role;
+	private String password;
 	
 	protected User() {
 		//Expects private empty no argument constructor
 	}
-	public User(String name, String role) {
+	
+	public User(int id, String userName, String role, String password) {
 		super();
-		this.name = name;
+		this.id = id;
+		this.userName = userName;
 		this.role = role;
+		this.password = password;
 	}
+
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", role=" + role + "]";
+		return "User [id=" + id + ", name=" + userName + ", role=" + role + ", password=" + password + "]";
 	}
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 	public String getName() {
-		return name;
+		return userName;
 	}
 	public String getRole() {
 		return role;
+	}
+	public String getPassword() {
+		return password;
 	}
 	
 }

@@ -2,26 +2,42 @@ package com.springbootproject.firstspringbootproject;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Survey {
-	private String id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
 	private String title;
 	private String description;
+	@OneToMany(fetch=FetchType.EAGER)
+	@JoinColumn(name="survey_id")
 	private List<Question> questions;
 
-	public Survey(String id, String title, String description,
-			List<Question> questions) {
+	public Survey() {
+		
+	}
+	public Survey(int id, String title, String description,
+			List<Question> questions2) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.description = description;
-		this.questions = questions;
+		this.questions = questions2;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

@@ -34,13 +34,13 @@ public class SurveyControllerTest {
 
 	@Test
 	public void retrieveDetailsForQuestion() throws Exception {
-		Question mockQuestion = new Question("Question1",
-				"Largest Country in the World", "Russia", Arrays.asList(
-						"India", "Russia", "United States", "China"));
+		Question mockQuestion = new Question(1,
+				"Largest Country in the World", "Russia", 
+						"India", "Russia", "United States", "China");
 
 		Mockito.when(
-				surveyService.retrieveQuestion(Mockito.anyString(), Mockito
-						.anyString())).thenReturn(mockQuestion);
+				surveyService.retrieveQuestion(Mockito.anyInt(), Mockito
+						.anyInt())).thenReturn(mockQuestion);
 
 		RequestBuilder requestBuilder = MockMvcRequestBuilders.get(
 				"/surveys/Survey1/questions/Question1").accept(
@@ -58,13 +58,12 @@ public class SurveyControllerTest {
 
 	@Test
 	public void createSurveyQuestion() throws Exception {
-		Question mockQuestion = new Question("1", "Smallest Number", "1",
-				Arrays.asList("1", "2", "3", "4"));
+		Question mockQuestion = new Question(1, "Smallest Number", "1","1", "2", "3", "4");
 
 		String questionJson = "{\"description\":\"Smallest Number\",\"correctAnswer\":\"1\",\"options\":[\"1\",\"2\",\"3\",\"4\"]}";
 		//surveyService.addQuestion to respond back with mockQuestion
 		Mockito.when(
-				surveyService.addQuestion(Mockito.anyString(), Mockito
+				surveyService.addQuestion(Mockito.anyInt(), Mockito
 						.any(Question.class))).thenReturn(mockQuestion);
 
 		//Send question as body to /surveys/Survey1/questions

@@ -1,12 +1,27 @@
 package com.springbootproject.firstspringbootproject;
 
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
 public class Question {
-	private String id;
+	@ManyToOne
+	@JsonIgnore
+	private Survey survey;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
 	private String description;
 	private String correctAnswer;
-	private List<String> options;
+	String option1;
+	String option2;
+	String option3;
+	String option4;
 
 	// Needed by Caused by: com.fasterxml.jackson.databind.JsonMappingException:
 	// Can not construct instance of com.in28minutes.springboot.model.Question:
@@ -17,21 +32,25 @@ public class Question {
 
 	}
 
-	public Question(String id, String description, String correctAnswer,
-			List<String> options) {
+	public Question(int id, String description, String correctAnswer,
+			String option1,String option2,String option3,String option4) {
 		super();
 		this.id = id;
 		this.description = description;
 		this.correctAnswer = correctAnswer;
-		this.options = options;
+		this.option1 = option1;
+		this.option2 = option2;
+		this.option3 = option3;
+		this.option4 = option4;
 	}
 
-	public String getId() {
+	
+	public Survey getSurvey() {
+		return survey;
+	}
+
+	public int getId() {
 		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	public String getDescription() {
@@ -42,22 +61,69 @@ public class Question {
 		return correctAnswer;
 	}
 
-	public List<String> getOptions() {
-		return options;
+	public String getOption1() {
+		return option1;
+	}
+
+	public String getOption2() {
+		return option2;
+	}
+
+	public String getOption3() {
+		return option3;
+	}
+
+	public String getOption4() {
+		return option4;
+	}
+
+	public void setSurvey(Survey survey) {
+		this.survey = survey;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public void setCorrectAnswer(String correctAnswer) {
+		this.correctAnswer = correctAnswer;
+	}
+
+	public void setOption1(String option1) {
+		this.option1 = option1;
+	}
+
+	public void setOption2(String option2) {
+		this.option2 = option2;
+	}
+
+	public void setOption3(String option3) {
+		this.option3 = option3;
+	}
+
+	public void setOption4(String option4) {
+		this.option4 = option4;
 	}
 
 	@Override
 	public String toString() {
 		return String
 				.format("Question [id=%s, description=%s, correctAnswer=%s, options=%s]",
-						id, description, correctAnswer, options);
+						id, description, correctAnswer, option1);
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((correctAnswer == null) ? 0 : correctAnswer.hashCode());
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + id;
+		result = prime * result + ((option1 == null) ? 0 : option1.hashCode());
 		return result;
 	}
 
@@ -70,12 +136,26 @@ public class Question {
 		if (getClass() != obj.getClass())
 			return false;
 		Question other = (Question) obj;
-		if (id == null) {
-			if (other.id != null)
+		if (correctAnswer == null) {
+			if (other.correctAnswer != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!correctAnswer.equals(other.correctAnswer))
+			return false;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
+		if (id != other.id)
+			return false;
+		if (option1 == null) {
+			if (other.option1 != null)
+				return false;
+		} else if (!option1.equals(other.option1))
 			return false;
 		return true;
 	}
+
+	
 
 }

@@ -42,7 +42,7 @@ public class SurveyControllerIT {
 	}
 
 	@Test
-	public void testRetrieveSurveyQuestion() throws JSONException {
+	public void testRetrieveSurveyQuestion() throws JSONException {//Body of the question format
 
 		HttpEntity<String> entity = new HttpEntity<String>(null, headers);
 
@@ -56,7 +56,7 @@ public class SurveyControllerIT {
 	}
 
 	@Test
-	public void retrieveAllSurveyQuestions() throws Exception {
+	public void retrieveAllSurveyQuestions() throws Exception {//Contains question
 
 		ResponseEntity<List<Question>> response = restTemplate.exchange(
 				createURLWithPort("/surveys/Survey1/questions"),
@@ -65,9 +65,9 @@ public class SurveyControllerIT {
 				new ParameterizedTypeReference<List<Question>>() {
 				});
 
-		Question sampleQuestion = new Question("Question1",
-				"Largest Country in the World", "Russia", Arrays.asList(
-						"India", "Russia", "United States", "China"));
+		Question sampleQuestion = new Question(1,
+				"Largest Country in the World", "Russia",
+						"India", "Russia", "United States", "China");
 
 		assertTrue(response.getBody().contains(sampleQuestion));
 	}
@@ -75,8 +75,7 @@ public class SurveyControllerIT {
 	@Test
 	public void addQuestion() {
 
-		Question question = new Question("DOESNTMATTER", "Question1", "Russia",
-				Arrays.asList("India", "Russia", "United States", "China"));
+		Question question = new Question(5,"Does", "Russia","India", "Russia", "United States", "China");
 
 		HttpEntity entity = new HttpEntity<Question>(question, headers);
 
