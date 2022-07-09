@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.springboot.web.springbootfirstwebapplication.controller.TodoRepository;
+<<<<<<< HEAD
 import com.springbootproject.firstspringbootproject.jpa.SurveyRepository;
 import com.springbootproject.firstspringbootproject.jpa.UserRepository;
 
@@ -24,6 +25,22 @@ public class SurveyController {
 	
 	@Autowired
 	SurveyRepository repository1;
+=======
+import com.springbootproject.firstspringbootproject.jpa.UserRepository;
+/*
+" / surveys / { surveyId } / questions / {questionId}"
+SurveyController
+SurveyService - Auto-wire
+PathVariable - surveyId
+surveys / Survey1 / questions 
+SurveyService
+SurveyService . retrieveQuestions ( surveyId )*/
+@RestController
+public class SurveyController {
+	
+	@Autowired
+	UserRepository repository;
+>>>>>>> 5f5578452f48ff02c533efa265035ab84027c0af
 	
 	@Autowired
 	private SurveyService surveyService;

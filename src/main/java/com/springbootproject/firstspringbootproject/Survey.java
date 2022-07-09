@@ -3,17 +3,24 @@ package com.springbootproject.firstspringbootproject;
 import java.util.List;
 
 import javax.persistence.Entity;
+<<<<<<< HEAD
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+=======
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+>>>>>>> 5f5578452f48ff02c533efa265035ab84027c0af
 
 @Entity
 public class Survey {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+<<<<<<< HEAD
 	private int id;
 	private String title;
 	private String description;
@@ -26,6 +33,15 @@ public class Survey {
 	}
 	public Survey(int id, String title, String description,
 			List<Question> questions2) {
+=======
+	private String id;
+	private String title;
+	private String description;
+	private String questions;
+
+	public Survey(String id, String title, String description,
+			String questions) {
+>>>>>>> 5f5578452f48ff02c533efa265035ab84027c0af
 		super();
 		this.id = id;
 		this.title = title;
@@ -57,11 +73,11 @@ public class Survey {
 		this.description = description;
 	}
 
-	public List<Question> getQuestions() {
+	public String getQuestions() {
 		return questions;
 	}
 
-	public void setQuestions(List<Question> questions) {
+	public void setQuestions(String questions) {
 		this.questions = questions;
 	}
 

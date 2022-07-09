@@ -9,7 +9,11 @@ import javax.persistence.Id;
 public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+<<<<<<< HEAD
 	private int id;
+=======
+	private Long id;
+>>>>>>> 5f5578452f48ff02c533efa265035ab84027c0af
 	
 	private String userName;
 	private String role;

@@ -11,5 +11,10 @@ import com.springbootproject.firstspringbootproject.Survey;
 @RepositoryRestResource(path = "users", collectionResourceRel = "users")
 public interface RestSurveyRepository extends
 		PagingAndSortingRepository<Survey, Long> {
+<<<<<<< HEAD
 	List<Survey> findById(@Param("id") String role);
 }
+=======
+	List<Survey> findByRole(@Param("role") String role);
+}
+>>>>>>> 5f5578452f48ff02c533efa265035ab84027c0af
